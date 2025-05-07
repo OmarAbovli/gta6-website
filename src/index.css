@@ -1,0 +1,179 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%; /* Dark background */
+    --foreground: 0 0% 100%; /* White text */
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 326 100% 50%; /* Neon Pink */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 196 100% 50%; /* Neon Blue */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 326 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 326 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gta-dark text-foreground antialiased font-montserrat;
+    background-image: radial-gradient(circle at center, #151515 0%, #0C0C0C 70%);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron text-white;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 5px theme('colors.gta.neonpink'), 0 0 10px theme('colors.gta.neonpink');
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 5px theme('colors.gta.neonblue'), 0 0 10px theme('colors.gta.neonblue');
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 5px theme('colors.gta.neonpink'), 0 0 10px theme('colors.gta.neonpink');
+  }
+  
+  .border-glow-blue {
+    box-shadow: 0 0 5px theme('colors.gta.neonblue'), 0 0 10px theme('colors.gta.neonblue');
+  }
+  
+  .neon-gradient {
+    background: linear-gradient(90deg, #FF00D5, #00CCFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .max-container {
+    @apply mx-auto max-w-[1440px] px-4 md:px-8 lg:px-16;
+  }
+  
+  .triangle-clip {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  /* Scrollbar customization */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: theme('colors.gta.dark');
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.gta.neonpink');
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.gta.neonblue');
+  }
+}
+
+.rockstar-border {
+  position: relative;
+  padding: 2px;
+}
+
+.rockstar-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #FF00D5, #00CCFF);
+  z-index: -1;
+  animation: animate-gradient-x 3s linear infinite;
+}
+
+@keyframes animate-gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Additional animation classes */
+.animate-glitch {
+  animation: glitch 0.5s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { 
+    transform: translate(0);
+  }
+  20% { 
+    transform: translate(-2px, 2px);
+  }
+  40% { 
+    transform: translate(-2px, -2px);
+  }
+  60% { 
+    transform: translate(2px, 2px);
+  }
+  80% { 
+    transform: translate(2px, -2px);
+  }
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}
